@@ -53,22 +53,22 @@ class AuthManager {
   static redirectByRole() {
     const user = this.getCurrentUser();
     if (!user) {
-      window.location.href = 'pages/login.html';
+      window.location.href = 'login.html';
       return;
     }
 
     switch (user.tipo) {
       case 'admin':
-        window.location.href = 'pages/admin.html';
+        window.location.href = 'admin.html';
         break;
       case 'professor':
-        window.location.href = 'pages/professor.html';
+        window.location.href = 'professor.html';
         break;
       case 'aluno':
         if (user.perfil === 'dedicado') {
-          window.location.href = 'pages/aluno-dedicado.html';
+          window.location.href = 'aluno-dedicado.html';
         } else {
-          window.location.href = 'pages/aluno-acompanhamento.html';
+          window.location.href = 'aluno-acompanhamento.html';
         }
         break;
       default:
@@ -79,7 +79,7 @@ class AuthManager {
   // Protect pages - call this on protected pages
   static requireAuth(requiredRole = null) {
     if (!this.isLoggedIn()) {
-      window.location.href = '../pages/login.html';
+      window.location.href = 'login.html';
       return false;
     }
 
