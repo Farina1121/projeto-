@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGEA - Painel do Aluno</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <!-- Mobile Navigation -->
+    <div id="mobile-nav"></div>
+
+    <div class="main-layout">
+        <!-- Sidebar -->
+        <div id="sidebar"></div>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <div class="mb-xl">
+                    <h1>Olá, Ana! 👋</h1>
+                    <p style="color: var(--color-gray-600);">Acompanhe seu progresso acadêmico e organize seus estudos</p>
+                </div>
+                
+                <!-- Student Statistics -->
+                <div id="aluno-stats" class="mb-xl">
+                    <!-- Stats will be loaded here by JavaScript -->
+                </div>
+                
+                <!-- Progress Overview -->
+                <div class="mb-xl">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>📊 Progresso por Disciplina</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="subject-progress">
+                                <div style="margin-bottom: var(--space-lg);">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-sm);">
+                                        <span style="font-weight: 500;">Matemática</span>
+                                        <span style="font-weight: 600; color: var(--color-success);">8.75</span>
+                                    </div>
+                                    <div class="progress progress-success">
+                                        <div class="progress-bar" style="width: 87.5%"></div>
+                                    </div>
+                                    <div style="font-size: var(--font-size-sm); color: var(--color-gray-600); margin-top: var(--space-xs);">
+                                        Excelente desempenho! Continue assim! 🌟
+                                    </div>
+                                </div>
+                                
+                                <div style="margin-bottom: var(--space-lg);">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-sm);">
+                                        <span style="font-weight: 500;">História</span>
+                                        <span style="font-weight: 600; color: var(--color-success);">9.2</span>
+                                    </div>
+                                    <div class="progress progress-success">
+                                        <div class="progress-bar" style="width: 92%"></div>
+                                    </div>
+                                    <div style="font-size: var(--font-size-sm); color: var(--color-gray-600); margin-top: var(--space-xs);">
+                                        Fantástico! Você é destaque na turma! ⭐
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-sm);">
+                                        <span style="font-weight: 500;">Português</span>
+                                        <span style="font-weight: 600; color: var(--color-warning);">7.8</span>
+                                    </div>
+                                    <div class="progress progress-warning">
+                                        <div class="progress-bar" style="width: 78%"></div>
+                                    </div>
+                                    <div style="font-size: var(--font-size-sm); color: var(--color-gray-600); margin-top: var(--space-xs);">
+                                        Bom desempenho! Uma revisão pode ajudar. 📚
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Agenda and Activities -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>📅 Agenda Unificada</h3>
+                            </div>
+                            <div class="card-body">
+                                <div id="unified-schedule">
+                                    <div style="padding: 12px 0; border-bottom: 1px solid var(--color-gray-300);">
+                                        <div style="display: flex; justify-content: between; align-items: center;">
+                                            <div>
+                                                <div style="font-weight: 500;">Prova de Matemática</div>
+                                                <div style="font-size: var(--font-size-sm); color: var(--color-gray-600);">Geometria Plana</div>
+                                            </div>
+                                            <div style="text-align: right;">
+                                                <div style="font-size: var(--font-size-sm); color: var(--color-error);">Amanhã</div>
+                                                <div style="font-size: var(--font-size-sm); color: var(--color-gray-600);">08:00</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="padding: 12px 0; border-bottom: 1px solid var(--color-gray-300);">
+                                        <div style="display: flex; justify-content: between; align-items: center;">
+                                            <div>
+                                                <div style="font-weight: 500;">Entrega de Redação</div>
+                                                <div style="font-size: var(--font-size-sm); color: var(--color-gray-600);">Tema: Sustentabilidade</div>
+                                            </div>
+                                            <div style="text-align: right;">
+                                                <div style="font-size: var(--font-size-sm); color: var(--color-warning);">Sexta-feira</div>
+                                                <div style="font-size: var(--font-size-sm); color: var(--color-gray-600);">23:59</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="padding: 12px 0;">
+                                        <div style="display: flex; justify-content: between; align-items: center;">
+                                            <div>
+                                                <div style="font-weight: 500;">Seminário de História</div>
+                                                <div style="font-size: var(--font-size-sm); color: var(--color-gray-600);">Revolução Industrial</div>
+                                            </div>
+                                            <div style="text-align: right;">
+                                                <div style="font-size: var(--font-size-sm); color: var(--color-success);">Próxima semana</div>
+                                                <div style="font-size: var(--font-size-sm); color: var(--color-gray-600);">14:00</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div style="margin-top: var(--space-md);">
+                                    <button class="btn btn-primary btn-sm w-100">Ver Agenda Completa</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>🎯 Metas e Conquistas</h3>
+                            </div>
+                            <div class="card-body">
+                                <div id="achievements">
+                                    <div style="background: var(--color-success); color: white; padding: 15px; border-radius: var(--radius-md); margin-bottom: var(--space-md);">
+                                        <div style="font-weight: 600; margin-bottom: var(--space-xs);">🏆 Conquistado!</div>
+                                        <div style="font-size: var(--font-size-sm);">Média acima de 8.0 por 3 meses consecutivos</div>
+                                    </div>
+                                    
+                                    <div style="background: var(--color-primary-light); padding: 15px; border-radius: var(--radius-md); margin-bottom: var(--space-md);">
+                                        <div style="font-weight: 600; margin-bottom: var(--space-xs); color: var(--color-primary);">🎯 Em Progresso</div>
+                                        <div style="font-size: var(--font-size-sm); color: var(--color-primary);">100% de presença no bimestre</div>
+                                        <div class="progress mt-sm">
+                                            <div class="progress-bar" style="width: 85%"></div>
+                                        </div>
+                                        <div style="font-size: var(--font-size-sm); color: var(--color-gray-600); margin-top: var(--space-xs);">
+                                            85% concluído - Faltam 3 dias!
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="background: var(--color-gray-100); padding: 15px; border-radius: var(--radius-md);">
+                                        <div style="font-weight: 600; margin-bottom: var(--space-xs); color: var(--color-gray-600);">⏳ Próxima Meta</div>
+                                        <div style="font-size: var(--font-size-sm); color: var(--color-gray-600);">Média 9.0 em todas as disciplinas</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Detailed Performance -->
+                <div class="mb-xl">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>📈 Análise Detalhada de Performance</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="detailed-performance">
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-lg);">
+                                    <div class="text-center">
+                                        <div style="font-size: var(--font-size-2xl); font-weight: 600; color: var(--color-success);">96%</div>
+                                        <div style="color: var(--color-gray-600);">Taxa de Presença</div>
+                                        <div style="font-size: var(--font-size-sm); color: var(--color-success); margin-top: var(--space-xs);">+2% vs. mês anterior</div>
+                                    </div>
+                                    
+                                    <div class="text-center">
+                                        <div style="font-size: var(--font-size-2xl); font-weight: 600; color: var(--color-primary);">8.58</div>
+                                        <div style="color: var(--color-gray-600);">Média Geral</div>
+                                        <div style="font-size: var(--font-size-sm); color: var(--color-primary); margin-top: var(--space-xs);">+0.3 vs. bimestre anterior</div>
+                                    </div>
+                                    
+                                    <div class="text-center">
+                                        <div style="font-size: var(--font-size-2xl); font-weight: 600; color: var(--color-warning);">12</div>
+                                        <div style="color: var(--color-gray-600);">Atividades Entregues</div>
+                                        <div style="font-size: var(--font-size-sm); color: var(--color-warning); margin-top: var(--space-xs);">100% no prazo</div>
+                                    </div>
+                                    
+                                    <div class="text-center">
+                                        <div style="font-size: var(--font-size-2xl); font-weight: 600; color: var(--color-accent);">3º</div>
+                                        <div style="color: var(--color-gray-600);">Posição na Turma</div>
+                                        <div style="font-size: var(--font-size-sm); color: var(--color-accent); margin-top: var(--space-xs);">Entre 25 alunos</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/data.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/components.js"></script>
+    <script src="../js/app.js"></script>
+    
+    <style>
+    .row {
+        display: flex;
+        gap: var(--space-lg);
+        margin-top: var(--space-xl);
+    }
+    
+    .col-md-6 {
+        flex: 1;
+    }
+    
+    @media (max-width: 768px) {
+        .row {
+            flex-direction: column;
+        }
+    }
+    </style>
+</body>
+</html>

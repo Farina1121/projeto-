@@ -1,52 +1,216 @@
-<h1 align="center"> DevLinks </h1>
+# SIGEA - Sistema de Gestão de Aulas
 
 <p align="center">
-Programa exclusivo e gratuito, promovido pela Rocketseat para ensino de tecnologias WEB. <br/>
-<a href="https://lp.rocketseat.com.br/devlinks/inscricao?utm_source=github&utm_medium=descricao&utm_campaign=capture-devlinks&utm_term=organic&utm_content=descricao-github-mayk-brito">Estude esse projeto em formato de vídeo clicando aqui.</a>
+<img alt="SIGEA" src="https://img.shields.io/badge/SIGEA-Sistema%20de%20Gestão%20de%20Aulas-1D4ED8?style=for-the-badge">
+<img alt="Status" src="https://img.shields.io/badge/Status-Concluído-10B981?style=for-the-badge">
+<img alt="License" src="https://img.shields.io/badge/License-MIT-F97316?style=for-the-badge">
 </p>
 
-<p align="center">
-  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-licença">Licença</a>
-</p>
+## 📋 Sobre o Projeto
 
-<p align="center">
-  <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=49AA26&labelColor=000000">
-</p>
+O SIGEA é um sistema completo de gestão educacional desenvolvido com foco na **experiência do usuário** e **personalização por perfil**. Cada tipo de usuário possui uma interface otimizada para suas necessidades específicas, proporcionando eficiência e engajamento.
 
-<br>
+### ✨ Diferenciais
 
-<p align="center">
-  <img alt="projeto DevLinks" src=".github/preview.jpg" width="100%">
-</p>
+- **Interfaces Personalizadas**: Cada perfil tem uma experiência única
+- **Design Motivacional**: Elementos visuais que engajam e motivam
+- **Acessibilidade**: Contrastes adequados e navegação por teclado
+- **Responsividade**: Mobile-first com adaptação perfeita
+- **Feedback Inteligente**: Micro-interações e notificações contextuais
 
-## 🚀 Tecnologias
+## 👥 Personas e Interfaces
 
-Esse projeto foi desenvolvido com as seguintes tecnologias:
+### 🔧 Cláudia (Coordenadora Pedagógica)
+- Dashboard com KPIs e métricas gerais
+- CRUD completo para turmas, professores e alunos
+- Relatórios exportáveis e alertas automáticos
+- Visão macro do sistema educacional
 
-- HTML e CSS
-- JavaScript
-- Git e Github
-- Figma
+### 👨‍🏫 Marcos (Professor)
+- Chamada rápida (máximo 2 minutos)
+- Gestão simplificada de notas
+- Reutilização de atividades
+- Interface mobile otimizada
 
-## 💻 Projeto
+### 📚 Ana (Aluna Dedicada)
+- Histórico detalhado de presenças
+- Acompanhamento granular de notas
+- Agenda unificada com metas
+- Análise completa de performance
 
-O DevLinks é um agregador de links para usar como cartão de visitas online.
+### 🎯 Lucas (Aluno em Acompanhamento)
+- Interface simplificada e intuitiva
+- Priorização clara de atividades
+- Feedback motivacional constante
+- Notificações visuais importantes
 
-- [Acesse o projeto finalizado, online](https://maykbrito.github.io/devlinks)
+## 🚀 Tecnologias Utilizadas
 
-- [Assistir aulas](https://lp.rocketseat.com.br/devlinks/inscricao?utm_source=github&utm_medium=descricao&utm_campaign=capture-devlinks&utm_term=organic&utm_content=descricao-github-mayk-brito)
+- **HTML5**: Semântica moderna e acessível
+- **CSS3**: Custom Properties, Grid, Flexbox
+- **JavaScript ES6+**: Vanilla JS com padrões modernos
+- **Design System**: Tokens consistentes e componentes reutilizáveis
+- **localStorage**: Gerenciamento de dados mock realistas
 
-## 🔖 Layout
+## 🎨 Sistema de Design
 
-Você pode visualizar o layout do projeto através [DESSE LINK](https://www.figma.com/community/file/1187422022288947321). É necessário ter conta no [Figma](https://figma.com) para acessá-lo.
+### Paleta de Cores
+```css
+--color-primary: #1D4ED8;        /* Azul principal */
+--color-primary-hover: #153EAE;   /* Azul hover */
+--color-primary-light: #E0ECFF;   /* Azul claro */
+--color-accent: #F97316;          /* Laranja acento */
+--color-success: #10B981;         /* Verde sucesso */
+--color-warning: #F59E0B;         /* Âmbar aviso */
+--color-error: #DC2626;           /* Vermelho erro */
+```
 
-## :memo: Licença
+### Tipografia
+- **Fonte**: Inter (Google Fonts)
+- **Escala**: Responsiva e acessível
+- **Pesos**: 400 (regular), 500 (medium), 600 (semibold)
 
-Esse projeto está sob a licença MIT.
+## 📂 Estrutura do Projeto
+
+```
+/
+├── index.html              # Página inicial com redirecionamento
+├── DESIGN.md              # Documentação completa do design
+├── README.md              # Este arquivo
+├── /css
+│   ├── styles.css         # Estilos base e design tokens
+│   ├── components.css     # Componentes reutilizáveis
+│   └── responsive.css     # Media queries e responsividade
+├── /js
+│   ├── app.js            # Lógica principal da aplicação
+│   ├── auth.js           # Sistema de autenticação
+│   ├── data.js           # Gerenciamento de dados mock
+│   └── components.js     # Componentes JavaScript
+├── /assets
+│   └── *.png             # Avatares e recursos visuais
+└── /pages
+    ├── login.html                    # Tela de login
+    ├── admin.html                    # Dashboard administrativo
+    ├── professor.html                # Painel do professor
+    ├── aluno-dedicado.html          # Interface da aluna Ana
+    └── aluno-acompanhamento.html    # Interface do aluno Lucas
+```
+
+## 🔐 Credenciais de Teste
+
+| Perfil | Usuário | Senha | Persona |
+|--------|---------|-------|---------|
+| **Admin** | `claudia` | `admin123` | Cláudia (Coordenadora) |
+| **Professor** | `marcos` | `prof123` | Marcos (Professor) |
+| **Aluna Dedicada** | `ana` | `aluna123` | Ana (Estudante) |
+| **Aluno Acompanhamento** | `lucas` | `aluno123` | Lucas (Precisa apoio) |
+
+## 🌐 Como Executar
+
+1. **Clone o repositório**
+   ```bash
+   git clone https://github.com/Farina1121/projeto-.git
+   cd projeto-
+   ```
+
+2. **Abra o projeto**
+   - Abra o arquivo `index.html` em um navegador
+   - **Ou** use um servidor local:
+   ```bash
+   # Com Python
+   python -m http.server 8000
+   
+   # Com Node.js (http-server)
+   npx http-server
+   
+   # Com PHP
+   php -S localhost:8000
+   ```
+
+3. **Acesse o sistema**
+   - Abra `http://localhost:8000` no navegador
+   - Use as credenciais de teste acima
+   - Explore as diferentes interfaces por perfil
+
+## 🎯 Casos de Uso Demonstrados
+
+### Coordenadora (Cláudia)
+- "Preciso ver rapidamente quais alunos estão em risco"
+- Acessa dashboard → visualiza alertas → toma ações preventivas
+
+### Professor (Marcos)  
+- "Quero lançar a chamada de hoje em 2 minutos"
+- Login → chamada rápida → seleciona turma → marca presenças
+
+### Aluna Dedicada (Ana)
+- "Onde posso ver meu progresso detalhado?"
+- Dashboard → métricas pessoais → histórico → metas
+
+### Aluno Acompanhamento (Lucas)
+- "O que preciso fazer hoje?"
+- Interface simplificada → prioridades claras → ações direcionadas
+
+## 📱 Responsividade
+
+- **Mobile**: < 768px - Interface colapsível, touch-friendly
+- **Tablet**: 768px - 1024px - Layout híbrido
+- **Desktop**: > 1024px - Experiência completa
+
+## ♿ Acessibilidade
+
+- Contrastes WCAG AA compliant
+- Navegação por teclado completa
+- Textos alternativos em imagens
+- Semântica HTML5 adequada
+- Focus indicators claros
+
+## 📊 Funcionalidades Implementadas
+
+- [x] Sistema de autenticação com redirecionamento por perfil
+- [x] Dashboard administrativo com KPIs
+- [x] Painel do professor com chamada rápida
+- [x] Interface dedicada para aluna organizada
+- [x] Interface simplificada para aluno em acompanhamento
+- [x] Sistema de notificações motivacionais
+- [x] Dados mock realistas com localStorage
+- [x] Design system completo e consistente
+- [x] Responsividade mobile-first
+- [x] Acessibilidade e boas práticas
+
+## 🔄 Próximas Melhorias
+
+- [ ] Implementação de backend real
+- [ ] Sistema de relatórios avançados
+- [ ] Integração com calendário
+- [ ] Notificações push
+- [ ] Sistema de mensagens
+- [ ] Gamificação para alunos
+- [ ] PWA (Progressive Web App)
+- [ ] Tema escuro
+
+## 📄 Documentação
+
+- **[DESIGN.md](DESIGN.md)**: Análise de concorrentes, personas e sistema de design completo
+- **Comentários no código**: Explicações detalhadas da implementação
+- **Estrutura modular**: Código organizado e reutilizável
+
+## 🤝 Contribuições
+
+Contribuições são sempre bem-vindas! Para contribuir:
+
+1. Fork o projeto
+2. Crie uma branch para sua funcionalidade (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
+
+## 📝 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
 
-Feito com ♥ by Rocketseat :wave: [Participe da nossa comunidade!](https://discord.gg/rocketseat)
+<p align="center">
+Desenvolvido com ❤️ para revolucionar a gestão educacional<br>
+<strong>SIGEA</strong> - Onde cada usuário tem sua experiência única
+</p>

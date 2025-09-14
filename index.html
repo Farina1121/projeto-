@@ -1,77 +1,42 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="light">
-    <head>
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,500;1,14..32,500&display=swap" rel="stylesheet">
-        
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>projetto</title>
-        <link rel="stylesheet" href="stye.css">
-    </head>
-    <body>
-        <div id="container">
-            <div id="profile">
-
-                <img src="./assets/avatar.png" alt=""/>
-
-                <p>@Marco Farina</p>
-
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGEA - Sistema de Gestão de Aulas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="auth-layout">
+        <div class="auth-card text-center">
+            <h1 style="color: var(--color-primary); margin-bottom: var(--space-md);">SIGEA</h1>
+            <h2 style="color: var(--color-gray-900); margin-bottom: var(--space-lg);">Sistema de Gestão de Aulas</h2>
+            <p style="color: var(--color-gray-600); margin-bottom: var(--space-xl);">
+                Bem-vindo ao sistema que revoluciona a gestão educacional com interfaces personalizadas para cada usuário.
+            </p>
+            
+            <div class="loading mb-lg">
+                <div class="spinner"></div>
+                <span>Redirecionando para o login...</span>
             </div>
-
-            <div id="switch" onclick="togglemode()">
-                <button>
-                    
-                </button>
-                <span>
-
-                </span>
-
+            
+            <div style="background: var(--color-gray-100); padding: var(--space-md); border-radius: var(--radius-md); font-size: var(--font-size-sm);">
+                <p><strong>Desenvolvido com:</strong></p>
+                <p>HTML5 • CSS3 • JavaScript • Design System Completo</p>
             </div>
-
-            <ul>
-                <li>
-                    <a href="https://github.com/Farina1121"
-                    target="__blank">github</a>
-                </li>
-
-                <li>
-                    <a href="https://www.linkedin.com/in/marco-antonio-farina-a366a6282/"
-                    target="__blank">linkedin</a>
-                </li>
-
-                <li>
-                    <a href="https://www.instagram.com/marcoo.farina/"
-                    target="_blank">meu instagram</a>
-                </li>
-
-            </ul>
-            <div id="social-links">
-                <a href="https://github.com/Farina1121" target="_blank">
-                    <ion-icon name="logo-github"></ion-icon>
-                </a>
-                
-                <a href="https://www.linkedin.com/in/marco-antonio-farina-a366a6282/1" target="_blank">
-                    <ion-icon name="logo-linkedin"></ion-icon>
-                </a>
-
-                <a href="https://www.instagram.com/marcoo.farina/" target="_blank">
-                    <ion-icon name="logo-instagram"></ion-icon>
-                </a>
-            </div>
-
-            <footer>
-                Feito com ♥ pela <a href="https//rocketseat.com.br">Rocketseat</a>
-            </footer>
         </div>
+    </div>
 
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-        <script src="script.js"></script>
-    </body>
-
+    <script>
+        // Auto redirect to login after 2 seconds
+        setTimeout(() => {
+            window.location.href = 'pages/login.html';
+        }, 2000);
+    </script>
+</body>
 </html>
