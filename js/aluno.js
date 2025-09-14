@@ -182,23 +182,23 @@ class StudentDashboard {
     }
 
     loadDedicatedSection(section) {
-        const interface = document.getElementById('studentInterface');
+        const interfaceElement = document.getElementById('studentInterface');
         
         switch(section) {
             case 'dashboard':
                 this.loadDedicatedDashboard();
                 break;
             case 'notas':
-                interface.innerHTML = this.renderDetailedGradesSection();
+                interfaceElement.innerHTML = this.renderDetailedGradesSection();
                 break;
             case 'frequencia':
-                interface.innerHTML = this.renderDetailedAttendanceSection();
+                interfaceElement.innerHTML = this.renderDetailedAttendanceSection();
                 break;
             case 'progresso':
-                interface.innerHTML = this.renderProgressSection();
+                interfaceElement.innerHTML = this.renderProgressSection();
                 break;
             case 'agenda':
-                interface.innerHTML = this.renderAgendaSection();
+                interfaceElement.innerHTML = this.renderAgendaSection();
                 break;
         }
     }
@@ -249,20 +249,20 @@ class StudentDashboard {
     }
 
     loadSimplifiedSection(section) {
-        const interface = document.getElementById('studentInterface');
+        const interfaceElement = document.getElementById('studentInterface');
         
         switch(section) {
             case 'dashboard':
                 this.loadSimplifiedDashboard();
                 break;
             case 'tarefas':
-                interface.innerHTML = this.renderSimplifiedTasksSection();
+                interfaceElement.innerHTML = this.renderSimplifiedTasksSection();
                 break;
             case 'notas':
-                interface.innerHTML = this.renderSimplifiedGradesSection();
+                interfaceElement.innerHTML = this.renderSimplifiedGradesSection();
                 break;
             case 'conquistas':
-                interface.innerHTML = this.renderAchievementsSection();
+                interfaceElement.innerHTML = this.renderAchievementsSection();
                 break;
         }
     }
