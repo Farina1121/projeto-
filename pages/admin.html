@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGEA - Painel Administrativo</title>
+    <link rel="stylesheet" href="../css/design-system.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <style>
+        /* Estilos específicos do admin */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .kpi-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--neutral-200);
+            text-align: center;
+            transition: all var(--transition-normal);
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .kpi-number {
+            font-size: 2.5rem;
+            font-weight: var(--weight-bold);
+            margin-bottom: var(--space-sm);
+        }
+
+        .kpi-label {
+            color: var(--neutral-600);
+            font-size: var(--text-small);
+            font-weight: var(--weight-medium);
+        }
+
+        .kpi-change {
+            font-size: var(--text-xs);
+            margin-top: var(--space-xs);
+        }
+
+        .change-positive {
+            color: var(--success-green);
+        }
+
+        .change-negative {
+            color: var(--error-red);
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .action-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            border: 1px solid var(--neutral-200);
+            text-align: center;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .action-card:hover {
+            background: var(--primary-blue-light);
+            border-color: var(--primary-blue);
+            transform: translateY(-1px);
+        }
+
+        .action-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .action-title {
+            font-weight: var(--weight-semibold);
+            color: var(--neutral-900);
+            margin-bottom: var(--space-xs);
+        }
+
+        .action-description {
+            font-size: var(--text-small);
+            color: var(--neutral-600);
+        }
+
+        .recent-activity {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--neutral-200);
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md) 0;
+            border-bottom: 1px solid var(--neutral-100);
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .activity-icon.alert {
+            background: var(--error-red-light);
+            color: var(--error-red);
+        }
+
+        .activity-icon.success {
+            background: var(--success-green-light);
+            color: var(--success-green);
+        }
+
+        .activity-icon.info {
+            background: var(--primary-blue-light);
+            color: var(--primary-blue);
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-title {
+            font-weight: var(--weight-medium);
+            color: var(--neutral-900);
+            margin-bottom: var(--space-xs);
+        }
+
+        .activity-description {
+            font-size: var(--text-small);
+            color: var(--neutral-600);
+        }
+
+        .activity-time {
+            font-size: var(--text-xs);
+            color: var(--neutral-500);
+        }
+
+        .chart-container {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--neutral-200);
+            margin-bottom: var(--space-xl);
+        }
+
+        .chart-title {
+            font-size: var(--text-h3);
+            font-weight: var(--weight-semibold);
+            margin-bottom: var(--space-lg);
+            color: var(--neutral-900);
+        }
+
+        .simple-chart {
+            display: flex;
+            align-items: end;
+            gap: var(--space-sm);
+            height: 150px;
+            margin-bottom: var(--space-md);
+        }
+
+        .chart-bar {
+            background: var(--primary-blue);
+            border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+            min-width: 40px;
+            flex: 1;
+            display: flex;
+            align-items: end;
+            justify-content: center;
+            color: var(--white);
+            font-size: var(--text-xs);
+            font-weight: var(--weight-medium);
+            padding: var(--space-xs);
+        }
+
+        .chart-labels {
+            display: flex;
+            gap: var(--space-sm);
+        }
+
+        .chart-label {
+            flex: 1;
+            text-align: center;
+            font-size: var(--text-xs);
+            color: var(--neutral-600);
+            min-width: 40px;
+        }
+
+        .alerts-panel {
+            background: var(--error-red-light);
+            border: 1px solid var(--error-red);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+
+        .alerts-title {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            color: var(--error-red);
+            font-weight: var(--weight-semibold);
+            margin-bottom: var(--space-md);
+        }
+
+        .alert-item {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin-bottom: var(--space-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .alert-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .alert-text {
+            font-size: var(--text-small);
+            color: var(--neutral-700);
+        }
+
+        .alert-action {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--text-xs);
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .quick-actions {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">📚 SIGEA</div>
+        </div>
+        <div class="sidebar-nav">
+            <a href="#dashboard" class="nav-item active">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="#turmas" class="nav-item">
+                <span class="nav-icon">🏫</span>
+                <span class="nav-text">Turmas</span>
+            </a>
+            <a href="#professores" class="nav-item">
+                <span class="nav-icon">👨‍🏫</span>
+                <span class="nav-text">Professores</span>
+            </a>
+            <a href="#alunos" class="nav-item">
+                <span class="nav-icon">👨‍🎓</span>
+                <span class="nav-text">Alunos</span>
+            </a>
+            <a href="#relatorios" class="nav-item">
+                <span class="nav-icon">📈</span>
+                <span class="nav-text">Relatórios</span>
+            </a>
+            <a href="#configuracoes" class="nav-item">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Configurações</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="main-header">
+            <div>
+                <h1 class="text-h2">Painel Administrativo</h1>
+                <p class="text-small text-neutral-600">Bem-vinda, <span data-user-name>Cláudia</span> 👋</p>
+            </div>
+            <div class="flex items-center gap-md">
+                <button class="btn btn-primary" onclick="showQuickAdd()">
+                    ➕ Adicionar
+                </button>
+                <button class="btn btn-secondary" onclick="exportData()">
+                    📊 Exportar
+                </button>
+                <button class="btn btn-secondary" onclick="logout()" title="Sair">
+                    🚪 Sair
+                </button>
+            </div>
+        </header>
+
+        <div class="main-body">
+            <!-- Alertas Importantes -->
+            <div class="alerts-panel" id="alertsPanel">
+                <div class="alerts-title">
+                    🚨 Alertas Importantes
+                </div>
+                <div class="alert-item">
+                    <span class="alert-text"><strong>Lucas Mendes:</strong> 3 faltas consecutivas em Matemática</span>
+                    <button class="alert-action" onclick="viewStudent(4)">Ver Aluno</button>
+                </div>
+                <div class="alert-item">
+                    <span class="alert-text"><strong>Turma 2º B:</strong> Frequência abaixo de 85% esta semana</span>
+                    <button class="alert-action" onclick="viewClass(2)">Ver Turma</button>
+                </div>
+                <div class="alert-item">
+                    <span class="alert-text"><strong>Prof. Maria Santos:</strong> Notas pendentes de lançamento</span>
+                    <button class="alert-action" onclick="contactTeacher(5)">Contatar</button>
+                </div>
+            </div>
+
+            <!-- KPIs Dashboard -->
+            <div class="dashboard-grid">
+                <div class="kpi-card">
+                    <div class="kpi-number text-primary-blue" id="totalAlunos">83</div>
+                    <div class="kpi-label">Total de Alunos</div>
+                    <div class="kpi-change change-positive">+5 este mês</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-number text-success" id="totalProfessores">12</div>
+                    <div class="kpi-label">Professores Ativos</div>
+                    <div class="kpi-change change-positive">+1 este mês</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-number text-accent-orange" id="totalTurmas">15</div>
+                    <div class="kpi-label">Turmas Ativas</div>
+                    <div class="kpi-change">Estável</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-number text-primary-blue" id="presencaMedia">92.5%</div>
+                    <div class="kpi-label">Frequência Média</div>
+                    <div class="kpi-change change-positive">+2.1% vs mês anterior</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-number text-error" id="alunosRisco">8</div>
+                    <div class="kpi-label">Alunos em Risco</div>
+                    <div class="kpi-change change-negative">Requer atenção</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-number text-success" id="aprovacaoMedia">87.3%</div>
+                    <div class="kpi-label">Taxa de Aprovação</div>
+                    <div class="kpi-change change-positive">+3.2% vs ano anterior</div>
+                </div>
+            </div>
+
+            <!-- Ações Rápidas -->
+            <div class="quick-actions">
+                <a href="#" class="action-card" onclick="openModal('addTurmaModal')">
+                    <div class="action-icon">🏫</div>
+                    <div class="action-title">Nova Turma</div>
+                    <div class="action-description">Criar uma nova turma</div>
+                </a>
+                <a href="#" class="action-card" onclick="openModal('addProfessorModal')">
+                    <div class="action-icon">👨‍🏫</div>
+                    <div class="action-title">Novo Professor</div>
+                    <div class="action-description">Cadastrar professor</div>
+                </a>
+                <a href="#" class="action-card" onclick="openModal('addAlunoModal')">
+                    <div class="action-icon">👨‍🎓</div>
+                    <div class="action-title">Novo Aluno</div>
+                    <div class="action-description">Matricular aluno</div>
+                </a>
+                <a href="#" class="action-card" onclick="generateReport()">
+                    <div class="action-icon">📊</div>
+                    <div class="action-title">Relatório</div>
+                    <div class="action-description">Gerar relatório</div>
+                </a>
+            </div>
+
+            <!-- Gráfico de Frequência Semanal -->
+            <div class="chart-container">
+                <h3 class="chart-title">📅 Frequência Semanal</h3>
+                <div class="simple-chart" id="frequencyChart">
+                    <!-- Será populado dinamicamente -->
+                </div>
+                <div class="chart-labels">
+                    <div class="chart-label">Seg</div>
+                    <div class="chart-label">Ter</div>
+                    <div class="chart-label">Qua</div>
+                    <div class="chart-label">Qui</div>
+                    <div class="chart-label">Sex</div>
+                </div>
+            </div>
+
+            <!-- Atividade Recente -->
+            <div class="recent-activity">
+                <h3 class="text-h3 mb-lg">📋 Atividade Recente</h3>
+                <div class="activity-item">
+                    <div class="activity-icon success">✅</div>
+                    <div class="activity-content">
+                        <div class="activity-title">Ana Rodrigues completou trabalho</div>
+                        <div class="activity-description">Trabalho sobre Equações - Matemática</div>
+                    </div>
+                    <div class="activity-time">2 min atrás</div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon alert">⚠️</div>
+                    <div class="activity-content">
+                        <div class="activity-title">Lucas Mendes - Nova falta</div>
+                        <div class="activity-description">3ª falta consecutiva em Matemática</div>
+                    </div>
+                    <div class="activity-time">15 min atrás</div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon info">📝</div>
+                    <div class="activity-content">
+                        <div class="activity-title">Prof. Marcos lançou notas</div>
+                        <div class="activity-description">Avaliação de Matemática - 3º Ano A</div>
+                    </div>
+                    <div class="activity-time">1 hora atrás</div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon success">👨‍🎓</div>
+                    <div class="activity-content">
+                        <div class="activity-title">Novo aluno matriculado</div>
+                        <div class="activity-description">Pedro Santos - 3º Ano A</div>
+                    </div>
+                    <div class="activity-time">3 horas atrás</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de Adicionar Turma -->
+    <div class="modal-overlay" id="addTurmaModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Nova Turma</h3>
+                <button class="modal-close" onclick="closeModal('addTurmaModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addTurmaForm">
+                    <div class="form-group">
+                        <label class="form-label">Nome da Turma</label>
+                        <input type="text" class="form-input" name="nome" placeholder="Ex: 3º Ano A - Matemática" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Série</label>
+                        <select class="form-select" name="serie" required>
+                            <option value="">Selecione...</option>
+                            <option value="1º Ano">1º Ano</option>
+                            <option value="2º Ano">2º Ano</option>
+                            <option value="3º Ano">3º Ano</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Disciplina</label>
+                        <input type="text" class="form-input" name="disciplina" placeholder="Ex: Matemática" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Professor</label>
+                        <select class="form-select" name="professorId" required>
+                            <option value="">Selecione...</option>
+                            <!-- Será populado dinamicamente -->
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('addTurmaModal')">Cancelar</button>
+                <button class="btn btn-primary" onclick="saveTurma()">Criar Turma</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/data.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>

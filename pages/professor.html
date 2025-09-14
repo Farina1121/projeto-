@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGEA - Painel do Professor</title>
+    <link rel="stylesheet" href="../css/design-system.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <style>
+        .turma-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--neutral-200);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .turma-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-blue);
+        }
+
+        .turma-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+        }
+
+        .turma-title {
+            font-size: var(--text-h4);
+            font-weight: var(--weight-semibold);
+            color: var(--neutral-900);
+            margin-bottom: var(--space-xs);
+        }
+
+        .turma-info {
+            font-size: var(--text-small);
+            color: var(--neutral-600);
+        }
+
+        .turma-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: var(--text-h4);
+            font-weight: var(--weight-bold);
+            color: var(--primary-blue);
+        }
+
+        .stat-label {
+            font-size: var(--text-xs);
+            color: var(--neutral-500);
+        }
+
+        .chamada-container {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--neutral-200);
+        }
+
+        .aluno-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-md);
+            border-bottom: 1px solid var(--neutral-100);
+        }
+
+        .aluno-item:last-child {
+            border-bottom: none;
+        }
+
+        .aluno-info {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .aluno-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            background: var(--primary-blue-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: var(--weight-semibold);
+            color: var(--primary-blue);
+        }
+
+        .aluno-details h4 {
+            font-size: var(--text-body);
+            font-weight: var(--weight-medium);
+            margin-bottom: var(--space-xs);
+        }
+
+        .aluno-details p {
+            font-size: var(--text-small);
+            color: var(--neutral-600);
+        }
+
+        .presenca-controls {
+            display: flex;
+            gap: var(--space-sm);
+        }
+
+        .presenca-btn {
+            padding: var(--space-xs) var(--space-sm);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: var(--text-small);
+            font-weight: var(--weight-medium);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .presenca-btn.presente {
+            background: var(--success-green);
+            color: var(--white);
+        }
+
+        .presenca-btn.ausente {
+            background: var(--error-red);
+            color: var(--white);
+        }
+
+        .presenca-btn.neutro {
+            background: var(--neutral-200);
+            color: var(--neutral-600);
+        }
+
+        .presenca-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
+            flex-wrap: wrap;
+        }
+
+        .date-selector {
+            background: var(--white);
+            border: 1px solid var(--neutral-300);
+            border-radius: var(--radius-md);
+            padding: var(--space-sm) var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .chamada-summary {
+            background: var(--primary-blue-light);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin-bottom: var(--space-lg);
+            text-align: center;
+        }
+
+        .summary-text {
+            color: var(--primary-blue);
+            font-weight: var(--weight-medium);
+        }
+
+        @media (max-width: 768px) {
+            .turma-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .quick-actions {
+                flex-direction: column;
+            }
+            
+            .presenca-controls {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">📚 SIGEA</div>
+        </div>
+        <div class="sidebar-nav">
+            <a href="#turmas" class="nav-item active">
+                <span class="nav-icon">🏫</span>
+                <span class="nav-text">Minhas Turmas</span>
+            </a>
+            <a href="#chamada" class="nav-item">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">Chamada</span>
+            </a>
+            <a href="#notas" class="nav-item">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Notas</span>
+            </a>
+            <a href="#atividades" class="nav-item">
+                <span class="nav-icon">📝</span>
+                <span class="nav-text">Atividades</span>
+            </a>
+            <a href="#relatorios" class="nav-item">
+                <span class="nav-icon">📈</span>
+                <span class="nav-text">Relatórios</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="main-header">
+            <div>
+                <h1 class="text-h2">Painel do Professor</h1>
+                <p class="text-small text-neutral-600">Bem-vindo, <span data-user-name>Prof. Marcos</span> 👨‍🏫</p>
+            </div>
+            <div class="flex items-center gap-md">
+                <button class="btn btn-primary" onclick="quickChamada()">
+                    ⚡ Chamada Rápida
+                </button>
+                <button class="btn btn-secondary" onclick="logout()" title="Sair">
+                    🚪 Sair
+                </button>
+            </div>
+        </header>
+
+        <div class="main-body">
+            <!-- Seção de Turmas (padrão) -->
+            <div id="turmasSection">
+                <div class="section-header mb-xl">
+                    <h2 class="text-h2 mb-sm">Minhas Turmas</h2>
+                    <p class="text-small text-neutral-600">Selecione uma turma para gerenciar chamada e notas</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-lg" id="turmasGrid">
+                    <!-- Será populado dinamicamente -->
+                </div>
+            </div>
+
+            <!-- Seção de Chamada -->
+            <div id="chamadaSection" class="hidden">
+                <div class="section-header flex justify-between items-center mb-xl">
+                    <div>
+                        <h2 class="text-h2 mb-sm">Chamada - <span id="chamadaTurmaTitle"></span></h2>
+                        <p class="text-small text-neutral-600">Registre a presença dos alunos</p>
+                    </div>
+                    <button class="btn btn-secondary" onclick="showTurmas()">
+                        ← Voltar às Turmas
+                    </button>
+                </div>
+
+                <div class="quick-actions">
+                    <input type="date" class="date-selector" id="chamadaDate" onchange="updateChamadaDate()">
+                    <button class="btn btn-success" onclick="marcarTodosPresentes()">✅ Todos Presentes</button>
+                    <button class="btn btn-error" onclick="marcarTodosAusentes()">❌ Todos Ausentes</button>
+                    <button class="btn btn-primary" onclick="salvarChamada()">💾 Salvar Chamada</button>
+                </div>
+
+                <div class="chamada-summary" id="chamadaSummary">
+                    <p class="summary-text">Presentes: <span id="presentesCount">0</span> | Ausentes: <span id="ausentesCount">0</span> | Total: <span id="totalAlunosCount">0</span></p>
+                </div>
+
+                <div class="chamada-container">
+                    <div id="alunosList">
+                        <!-- Será populado dinamicamente -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção de Notas -->
+            <div id="notasSection" class="hidden">
+                <div class="section-header flex justify-between items-center mb-xl">
+                    <div>
+                        <h2 class="text-h2 mb-sm">Gerenciar Notas - <span id="notasTurmaTitle"></span></h2>
+                        <p class="text-small text-neutral-600">Lance e gerencie as notas dos alunos</p>
+                    </div>
+                    <button class="btn btn-secondary" onclick="showTurmas()">
+                        ← Voltar às Turmas
+                    </button>
+                </div>
+
+                <div class="table">
+                    <thead>
+                        <tr>
+                            <th>Aluno</th>
+                            <th>Nota 1</th>
+                            <th>Nota 2</th>
+                            <th>Média</th>
+                            <th>Situação</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="notasTable">
+                        <!-- Será populado dinamicamente -->
+                    </tbody>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../js/data.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/professor.js"></script>
+</body>
+</html>
