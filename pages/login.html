@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGEA - Login</title>
+    <link rel="stylesheet" href="../css/design-system.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-hover) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-md);
+        }
+
+        .login-container {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            max-width: 400px;
+            overflow: hidden;
+        }
+
+        .login-header {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: var(--space-2xl) var(--space-xl);
+            text-align: center;
+        }
+
+        .login-header h1 {
+            font-size: var(--text-h2);
+            font-weight: var(--weight-bold);
+            margin-bottom: var(--space-sm);
+        }
+
+        .login-header p {
+            opacity: 0.9;
+            font-size: var(--text-small);
+        }
+
+        .login-form {
+            padding: var(--space-2xl) var(--space-xl);
+        }
+
+        .credentials-demo {
+            background: var(--neutral-50);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin-bottom: var(--space-lg);
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .credentials-demo h3 {
+            font-size: var(--text-small);
+            font-weight: var(--weight-semibold);
+            color: var(--neutral-700);
+            margin-bottom: var(--space-sm);
+        }
+
+        .credential-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-xs) 0;
+            font-size: var(--text-xs);
+            color: var(--neutral-600);
+        }
+
+        .credential-item strong {
+            color: var(--neutral-800);
+        }
+
+        .credential-item button {
+            background: none;
+            border: none;
+            color: var(--primary-blue);
+            cursor: pointer;
+            font-size: var(--text-xs);
+            padding: var(--space-xs);
+            border-radius: var(--radius-sm);
+            transition: background-color var(--transition-fast);
+        }
+
+        .credential-item button:hover {
+            background-color: var(--primary-blue-light);
+        }
+
+        .alert {
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+            font-size: var(--text-small);
+        }
+
+        .alert-error {
+            background-color: var(--error-red-light);
+            color: var(--error-red);
+            border: 1px solid var(--error-red);
+        }
+
+        .alert-success {
+            background-color: var(--success-green-light);
+            color: var(--success-green);
+            border: 1px solid var(--success-green);
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: var(--space-lg);
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--neutral-200);
+        }
+
+        .form-footer p {
+            font-size: var(--text-xs);
+            color: var(--neutral-500);
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-container {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .login-container {
+                margin: var(--space-md);
+            }
+            
+            .login-header,
+            .login-form {
+                padding: var(--space-xl) var(--space-md);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>📚 SIGEA</h1>
+            <p>Sistema de Gestão de Aulas</p>
+        </div>
+
+        <form id="loginForm" class="login-form">
+            <!-- Demonstração de credenciais -->
+            <div class="credentials-demo">
+                <h3>🔑 Credenciais de Demonstração</h3>
+                <div class="credential-item">
+                    <span><strong>Admin:</strong> claudia / admin123</span>
+                    <button type="button" onclick="fillCredentials('claudia', 'admin123')">Usar</button>
+                </div>
+                <div class="credential-item">
+                    <span><strong>Professor:</strong> marcos / prof123</span>
+                    <button type="button" onclick="fillCredentials('marcos', 'prof123')">Usar</button>
+                </div>
+                <div class="credential-item">
+                    <span><strong>Aluna:</strong> ana / aluna123</span>
+                    <button type="button" onclick="fillCredentials('ana', 'aluna123')">Usar</button>
+                </div>
+                <div class="credential-item">
+                    <span><strong>Aluno:</strong> lucas / aluno123</span>
+                    <button type="button" onclick="fillCredentials('lucas', 'aluno123')">Usar</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="username" class="form-label">Usuário</label>
+                <input 
+                    type="text" 
+                    id="username" 
+                    name="username" 
+                    class="form-input" 
+                    placeholder="Digite seu usuário"
+                    required
+                    autocomplete="username"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label">Senha</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    class="form-input" 
+                    placeholder="Digite sua senha"
+                    required
+                    autocomplete="current-password"
+                >
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full btn-lg">
+                Entrar
+            </button>
+
+            <div class="form-footer">
+                <p>
+                    © 2024 SIGEA - Sistema de Gestão de Aulas<br>
+                    <small>Versão de demonstração com dados mockados</small>
+                </p>
+            </div>
+        </form>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/data.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+        // Função para preencher credenciais automaticamente
+        function fillCredentials(username, password) {
+            document.getElementById('username').value = username;
+            document.getElementById('password').value = password;
+            
+            // Foco no botão de entrar para melhor UX
+            document.querySelector('button[type="submit"]').focus();
+        }
+
+        // Adicionar efeito visual quando clicar nos botões de credencial
+        document.addEventListener('DOMContentLoaded', () => {
+            const credentialButtons = document.querySelectorAll('.credential-item button');
+            
+            credentialButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    // Feedback visual
+                    button.style.backgroundColor = 'var(--primary-blue)';
+                    button.style.color = 'var(--white)';
+                    
+                    setTimeout(() => {
+                        button.style.backgroundColor = '';
+                        button.style.color = '';
+                    }, 200);
+                });
+            });
+
+            // Auto-focus no campo de usuário
+            document.getElementById('username').focus();
+        });
+
+        // Adicionar efeito de loading quando clicar em qualquer credencial de demo
+        document.querySelectorAll('.credential-item button').forEach(button => {
+            button.addEventListener('click', () => {
+                setTimeout(() => {
+                    if (document.getElementById('username').value && document.getElementById('password').value) {
+                        document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+                    }
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGEA - Painel do Aluno</title>
+    <link rel="stylesheet" href="../css/design-system.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <style>
+        /* Estilos específicos para alunos */
+        .student-header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-hover) 100%);
+            color: var(--white);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+            text-align: center;
+        }
+
+        .student-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--radius-full);
+            background: var(--white);
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: var(--weight-bold);
+            margin: 0 auto var(--space-md);
+        }
+
+        .student-name {
+            font-size: var(--text-h2);
+            font-weight: var(--weight-bold);
+            margin-bottom: var(--space-sm);
+        }
+
+        .student-info {
+            opacity: 0.9;
+            font-size: var(--text-body);
+        }
+
+        /* Interface Dedicada (Ana) */
+        .dedicated-interface {
+            display: grid;
+            gap: var(--space-xl);
+        }
+
+        .progress-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+
+        .progress-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--neutral-200);
+            text-align: center;
+        }
+
+        .progress-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--radius-full);
+            margin: 0 auto var(--space-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--text-h3);
+            font-weight: var(--weight-bold);
+            color: var(--white);
+        }
+
+        .progress-circle.excellent {
+            background: var(--success-green);
+        }
+
+        .progress-circle.good {
+            background: var(--primary-blue);
+        }
+
+        .progress-circle.warning {
+            background: var(--warning-amber);
+        }
+
+        .progress-circle.danger {
+            background: var(--error-red);
+        }
+
+        .detailed-stats {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--neutral-200);
+        }
+
+        /* Interface Simplificada (Lucas) */
+        .simplified-interface {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .motivational-header {
+            background: linear-gradient(135deg, var(--accent-orange) 0%, var(--warning-amber) 100%);
+            color: var(--white);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+
+        .next-action-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            box-shadow: var(--shadow-lg);
+            border: 3px solid var(--accent-orange);
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+
+        .action-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .action-title {
+            font-size: var(--text-h3);
+            font-weight: var(--weight-bold);
+            color: var(--neutral-900);
+            margin-bottom: var(--space-sm);
+        }
+
+        .action-description {
+            color: var(--neutral-600);
+            margin-bottom: var(--space-lg);
+        }
+
+        .achievement-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--success-green-light);
+            color: var(--success-green);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-full);
+            font-size: var(--text-small);
+            font-weight: var(--weight-medium);
+            margin: var(--space-xs);
+        }
+
+        .priority-list {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--neutral-200);
+        }
+
+        .priority-item {
+            padding: var(--space-lg);
+            border-bottom: 1px solid var(--neutral-100);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .priority-item:last-child {
+            border-bottom: none;
+        }
+
+        .priority-item.high {
+            border-left: 4px solid var(--error-red);
+            background: var(--error-red-light);
+        }
+
+        .priority-item.medium {
+            border-left: 4px solid var(--warning-amber);
+            background: var(--warning-amber-light);
+        }
+
+        .priority-item.low {
+            border-left: 4px solid var(--success-green);
+            background: var(--success-green-light);
+        }
+
+        .priority-icon {
+            font-size: 1.5rem;
+        }
+
+        .priority-content {
+            flex: 1;
+        }
+
+        .priority-title {
+            font-weight: var(--weight-semibold);
+            margin-bottom: var(--space-xs);
+        }
+
+        .priority-meta {
+            font-size: var(--text-small);
+            color: var(--neutral-600);
+        }
+
+        .priority-action {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-md);
+            font-size: var(--text-small);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .priority-action:hover {
+            background: var(--primary-blue-hover);
+            transform: translateY(-1px);
+        }
+
+        .encouragement-banner {
+            background: linear-gradient(135deg, var(--success-green) 0%, var(--primary-blue) 100%);
+            color: var(--white);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin-bottom: var(--space-xl);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .progress-overview {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .student-header,
+            .motivational-header {
+                padding: var(--space-lg);
+            }
+            
+            .next-action-card {
+                padding: var(--space-lg);
+            }
+        }
+
+        /* Notas e Frequência */
+        .grades-container {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--neutral-200);
+            margin-bottom: var(--space-xl);
+        }
+
+        .grade-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-md) 0;
+            border-bottom: 1px solid var(--neutral-100);
+        }
+
+        .grade-item:last-child {
+            border-bottom: none;
+        }
+
+        .grade-subject {
+            font-weight: var(--weight-medium);
+            color: var(--neutral-900);
+        }
+
+        .grade-values {
+            display: flex;
+            gap: var(--space-md);
+            align-items: center;
+        }
+
+        .grade-value {
+            background: var(--neutral-100);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--text-small);
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .grade-average {
+            background: var(--primary-blue-light);
+            color: var(--primary-blue);
+            font-weight: var(--weight-semibold);
+        }
+
+        .attendance-summary {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--neutral-200);
+        }
+
+        .attendance-chart {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+        }
+
+        .attendance-day {
+            aspect-ratio: 1;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--text-xs);
+            font-weight: var(--weight-medium);
+            color: var(--white);
+        }
+
+        .attendance-day.present {
+            background: var(--success-green);
+        }
+
+        .attendance-day.absent {
+            background: var(--error-red);
+        }
+
+        .attendance-day.future {
+            background: var(--neutral-200);
+            color: var(--neutral-500);
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">📚 SIGEA</div>
+        </div>
+        <div class="sidebar-nav" id="studentNav">
+            <!-- Será populado dinamicamente baseado no perfil -->
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="main-header">
+            <div>
+                <h1 class="text-h2" id="headerTitle">Meu Painel</h1>
+                <p class="text-small text-neutral-600">Bem-vindo(a), <span data-user-name>Aluno</span> 👨‍🎓</p>
+            </div>
+            <div class="flex items-center gap-md">
+                <button class="btn btn-secondary" onclick="logout()" title="Sair">
+                    🚪 Sair
+                </button>
+            </div>
+        </header>
+
+        <div class="main-body">
+            <!-- Interface será carregada dinamicamente baseada no perfil do aluno -->
+            <div id="studentInterface">
+                <!-- Conteúdo dinâmico -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../js/data.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/aluno.js"></script>
+</body>
+</html>

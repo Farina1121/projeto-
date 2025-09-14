@@ -1,77 +1,82 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="light">
-    <head>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGEA - Sistema de Gestão de Aulas</title>
+    <link rel="stylesheet" href="css/design-system.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-hover) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+        }
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,500;1,14..32,500&display=swap" rel="stylesheet">
-        
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>projetto</title>
-        <link rel="stylesheet" href="stye.css">
-    </head>
-    <body>
-        <div id="container">
-            <div id="profile">
+        .welcome-container {
+            max-width: 600px;
+            padding: var(--space-xl);
+        }
 
-                <img src="./assets/avatar.png" alt=""/>
+        .logo {
+            font-size: 4rem;
+            margin-bottom: var(--space-md);
+        }
 
-                <p>@Marco Farina</p>
+        .title {
+            font-size: var(--text-h1);
+            font-weight: var(--weight-bold);
+            margin-bottom: var(--space-md);
+        }
 
-            </div>
+        .subtitle {
+            font-size: var(--text-h4);
+            opacity: 0.9;
+            margin-bottom: var(--space-2xl);
+        }
 
-            <div id="switch" onclick="togglemode()">
-                <button>
-                    
-                </button>
-                <span>
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--white);
+            animation: spin 1s linear infinite;
+            margin-right: var(--space-sm);
+        }
 
-                </span>
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
 
-            </div>
-
-            <ul>
-                <li>
-                    <a href="https://github.com/Farina1121"
-                    target="__blank">github</a>
-                </li>
-
-                <li>
-                    <a href="https://www.linkedin.com/in/marco-antonio-farina-a366a6282/"
-                    target="__blank">linkedin</a>
-                </li>
-
-                <li>
-                    <a href="https://www.instagram.com/marcoo.farina/"
-                    target="_blank">meu instagram</a>
-                </li>
-
-            </ul>
-            <div id="social-links">
-                <a href="https://github.com/Farina1121" target="_blank">
-                    <ion-icon name="logo-github"></ion-icon>
-                </a>
-                
-                <a href="https://www.linkedin.com/in/marco-antonio-farina-a366a6282/1" target="_blank">
-                    <ion-icon name="logo-linkedin"></ion-icon>
-                </a>
-
-                <a href="https://www.instagram.com/marcoo.farina/" target="_blank">
-                    <ion-icon name="logo-instagram"></ion-icon>
-                </a>
-            </div>
-
-            <footer>
-                Feito com ♥ pela <a href="https//rocketseat.com.br">Rocketseat</a>
-            </footer>
+        .redirect-message {
+            font-size: var(--text-body);
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <div class="logo">📚</div>
+        <h1 class="title">SIGEA</h1>
+        <p class="subtitle">Sistema de Gestão de Aulas</p>
+        <div class="redirect-message">
+            <span class="loading"></span>
+            Redirecionando para o login...
         </div>
+    </div>
 
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-        <script src="script.js"></script>
-    </body>
-
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // Redirecionar automaticamente para o login após 2 segundos
+        setTimeout(() => {
+            window.location.href = 'pages/login.html';
+        }, 2000);
+    </script>
+</body>
 </html>
