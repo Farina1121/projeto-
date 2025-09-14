@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGEA - Dashboard Administrativo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <!-- Mobile Navigation -->
+    <div id="mobile-nav"></div>
+
+    <div class="main-layout">
+        <!-- Sidebar -->
+        <div id="sidebar"></div>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <div class="mb-xl">
+                    <h1>Dashboard Administrativo</h1>
+                    <p style="color: var(--color-gray-600);">Visão geral do sistema e métricas principais</p>
+                </div>
+                
+                <!-- Dashboard Statistics -->
+                <div id="dashboard-stats" class="mb-xl">
+                    <!-- Stats will be loaded here by JavaScript -->
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="mb-xl">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Ações Rápidas</h3>
+                        </div>
+                        <div class="card-body">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md);">
+                                <button onclick="window.location.href='admin-turmas.html'" class="btn btn-primary">
+                                    <span class="nav-icon">🎓</span>
+                                    Nova Turma
+                                </button>
+                                <button onclick="window.location.href='admin-professores.html'" class="btn btn-secondary">
+                                    <span class="nav-icon">👨‍🏫</span>
+                                    Cadastrar Professor
+                                </button>
+                                <button onclick="window.location.href='admin-alunos.html'" class="btn btn-secondary">
+                                    <span class="nav-icon">👥</span>
+                                    Matricular Aluno
+                                </button>
+                                <button onclick="window.location.href='admin-relatorios.html'" class="btn btn-secondary">
+                                    <span class="nav-icon">📈</span>
+                                    Gerar Relatório
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Activity -->
+                <div id="recent-activity" class="mb-xl">
+                    <!-- Recent activity will be loaded here -->
+                </div>
+                
+                <!-- Alerts and Warnings -->
+                <div class="mb-xl">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>⚠️ Alertas Importantes</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="admin-alerts">
+                                <div class="alert alert-warning">
+                                    <strong>Atenção:</strong> 3 alunos com taxa de presença abaixo de 75%
+                                </div>
+                                <div class="alert alert-info">
+                                    <strong>Lembrete:</strong> Período de avaliações inicia na próxima semana
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Summary Tables -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Turmas Ativas</h3>
+                            </div>
+                            <div class="card-body">
+                                <div id="turmas-summary">
+                                    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--color-gray-300);">
+                                        <span>3º Ano A - Matemática</span>
+                                        <span class="badge badge-success">25 alunos</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--color-gray-300);">
+                                        <span>2º Ano B - História</span>
+                                        <span class="badge badge-success">28 alunos</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; padding: 10px 0;">
+                                        <span>1º Ano C - Português</span>
+                                        <span class="badge badge-success">22 alunos</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Professores</h3>
+                            </div>
+                            <div class="card-body">
+                                <div id="professores-summary">
+                                    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--color-gray-300);">
+                                        <span>Marcos Silva</span>
+                                        <span class="badge badge-primary">Matemática</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--color-gray-300);">
+                                        <span>Maria Santos</span>
+                                        <span class="badge badge-primary">História</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; padding: 10px 0;">
+                                        <span>João Costa</span>
+                                        <span class="badge badge-primary">Português</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/data.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/components.js"></script>
+    <script src="../js/app.js"></script>
+    
+    <style>
+    .row {
+        display: flex;
+        gap: var(--space-lg);
+        margin-top: var(--space-xl);
+    }
+    
+    .col-md-6 {
+        flex: 1;
+    }
+    
+    @media (max-width: 768px) {
+        .row {
+            flex-direction: column;
+        }
+    }
+    </style>
+</body>
+</html>

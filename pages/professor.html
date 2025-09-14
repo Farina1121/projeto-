@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGEA - Painel do Professor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <!-- Mobile Navigation -->
+    <div id="mobile-nav"></div>
+
+    <div class="main-layout">
+        <!-- Sidebar -->
+        <div id="sidebar"></div>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <div class="mb-xl">
+                    <h1>Painel do Professor</h1>
+                    <p style="color: var(--color-gray-600);">Gerencie suas turmas e atividades de forma eficiente</p>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="mb-xl">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Ações Rápidas</h3>
+                        </div>
+                        <div class="card-body">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-md);">
+                                <button onclick="quickAttendance()" class="btn btn-primary">
+                                    <span class="nav-icon">✅</span>
+                                    Fazer Chamada Rápida
+                                </button>
+                                <button onclick="window.location.href='professor-notas.html'" class="btn btn-secondary">
+                                    <span class="nav-icon">📝</span>
+                                    Lançar Notas
+                                </button>
+                                <button onclick="window.location.href='professor-atividades.html'" class="btn btn-secondary">
+                                    <span class="nav-icon">📋</span>
+                                    Nova Atividade
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Professor's Classes -->
+                <div id="turmas-professor" class="mb-xl">
+                    <!-- Turmas will be loaded here by JavaScript -->
+                </div>
+                
+                <!-- Today's Schedule -->
+                <div class="mb-xl">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>📅 Agenda de Hoje</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="today-schedule">
+                                <div style="display: flex; align-items: center; padding: 15px 0; border-bottom: 1px solid var(--color-gray-300);">
+                                    <div style="margin-right: 20px; font-weight: 600; color: var(--color-primary);">08:00 - 09:40</div>
+                                    <div>
+                                        <div style="font-weight: 500;">3º Ano A - Matemática</div>
+                                        <div style="font-size: var(--font-size-sm); color: var(--color-gray-600);">Sala A-201 | Álgebra Linear</div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: center; padding: 15px 0; border-bottom: 1px solid var(--color-gray-300);">
+                                    <div style="margin-right: 20px; font-weight: 600; color: var(--color-primary);">10:00 - 11:40</div>
+                                    <div>
+                                        <div style="font-weight: 500;">2º Ano B - Matemática</div>
+                                        <div style="font-size: var(--font-size-sm); color: var(--color-gray-600);">Sala B-105 | Geometria</div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: center; padding: 15px 0;">
+                                    <div style="margin-right: 20px; font-weight: 600; color: var(--color-primary);">14:00 - 15:40</div>
+                                    <div>
+                                        <div style="font-weight: 500;">1º Ano C - Matemática</div>
+                                        <div style="font-size: var(--font-size-sm); color: var(--color-gray-600);">Sala A-103 | Fundamentos</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Activities -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Próximas Entregas</h3>
+                            </div>
+                            <div class="card-body">
+                                <div id="upcoming-deadlines">
+                                    <div style="padding: 10px 0; border-bottom: 1px solid var(--color-gray-300);">
+                                        <div style="font-weight: 500;">Exercícios de Álgebra</div>
+                                        <div style="font-size: var(--font-size-sm); color: var(--color-warning);">Vence em 2 dias</div>
+                                    </div>
+                                    <div style="padding: 10px 0; border-bottom: 1px solid var(--color-gray-300);">
+                                        <div style="font-weight: 500;">Prova de Geometria</div>
+                                        <div style="font-size: var(--font-size-sm); color: var(--color-error);">Vence amanhã</div>
+                                    </div>
+                                    <div style="padding: 10px 0;">
+                                        <div style="font-weight: 500;">Lista de Funções</div>
+                                        <div style="font-size: var(--font-size-sm); color: var(--color-success);">Vence na próxima semana</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Estatísticas Rápidas</h3>
+                            </div>
+                            <div class="card-body">
+                                <div id="professor-stats">
+                                    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--color-gray-300);">
+                                        <span>Chamadas feitas hoje:</span>
+                                        <span class="badge badge-success">2/3</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--color-gray-300);">
+                                        <span>Notas pendentes:</span>
+                                        <span class="badge badge-warning">8</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--color-gray-300);">
+                                        <span>Atividades criadas:</span>
+                                        <span class="badge badge-primary">12</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; padding: 10px 0;">
+                                        <span>Taxa média de presença:</span>
+                                        <span class="badge badge-success">87%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/data.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/components.js"></script>
+    <script src="../js/app.js"></script>
+    
+    <script>
+    function quickAttendance() {
+        const user = AuthManager.getCurrentUser();
+        const turmas = DataManager.getTurmasByProfessor(user.id);
+        
+        if (turmas.length === 0) {
+            Notification.warning('Você não possui turmas atribuídas.');
+            return;
+        }
+        
+        if (turmas.length === 1) {
+            window.location.href = `professor-chamada.html?turma=${turmas[0].id}`;
+        } else {
+            // Show modal to select class
+            const options = turmas.map(t => `
+                <button class="btn btn-secondary w-100 mb-sm" onclick="window.location.href='professor-chamada.html?turma=${t.id}'; Modal.hide();">
+                    ${t.nome}
+                </button>
+            `).join('');
+            
+            Modal.show('Selecionar Turma', `
+                <p>Selecione a turma para fazer a chamada:</p>
+                ${options}
+            `);
+        }
+    }
+    </script>
+    
+    <style>
+    .row {
+        display: flex;
+        gap: var(--space-lg);
+        margin-top: var(--space-xl);
+    }
+    
+    .col-md-6 {
+        flex: 1;
+    }
+    
+    @media (max-width: 768px) {
+        .row {
+            flex-direction: column;
+        }
+    }
+    </style>
+</body>
+</html>

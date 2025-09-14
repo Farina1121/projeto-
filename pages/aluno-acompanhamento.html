@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGEA - Meu Painel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <!-- Mobile Navigation -->
+    <div id="mobile-nav"></div>
+
+    <div class="main-layout">
+        <!-- Sidebar -->
+        <div id="sidebar"></div>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <div class="mb-xl">
+                    <h1>E aí, Lucas! 🎉</h1>
+                    <p style="color: var(--color-gray-600); font-size: var(--font-size-lg);">Vamos ver o que você precisa fazer hoje?</p>
+                </div>
+                
+                <!-- Today's Priority -->
+                <div class="mb-xl">
+                    <div style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%); color: white; padding: var(--space-xl); border-radius: var(--radius-lg); text-align: center;">
+                        <h2 style="color: white; margin-bottom: var(--space-md);">🎯 Foco de Hoje</h2>
+                        <p style="font-size: var(--font-size-lg); margin-bottom: var(--space-lg);">Fazer a Prova de Matemática</p>
+                        <div style="font-size: var(--font-size-sm); opacity: 0.9;">Sala A-201 • 08:00 • Você consegue! 💪</div>
+                    </div>
+                </div>
+                
+                <!-- Quick Status -->
+                <div class="mb-xl">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-md);">
+                        <div style="background: var(--color-success); color: white; padding: var(--space-lg); border-radius: var(--radius-lg); text-align: center;">
+                            <div style="font-size: var(--font-size-2xl); font-weight: 600; margin-bottom: var(--space-xs);">✅</div>
+                            <div>Presença</div>
+                            <div style="font-size: var(--font-size-sm); opacity: 0.9;">Você veio hoje!</div>
+                        </div>
+                        
+                        <div style="background: var(--color-primary); color: white; padding: var(--space-lg); border-radius: var(--radius-lg); text-align: center;">
+                            <div style="font-size: var(--font-size-2xl); font-weight: 600; margin-bottom: var(--space-xs);">6.8</div>
+                            <div>Sua Média</div>
+                            <div style="font-size: var(--font-size-sm); opacity: 0.9;">Está melhorando!</div>
+                        </div>
+                        
+                        <div style="background: var(--color-warning); color: white; padding: var(--space-lg); border-radius: var(--radius-lg); text-align: center;">
+                            <div style="font-size: var(--font-size-2xl); font-weight: 600; margin-bottom: var(--space-xs);">⏰</div>
+                            <div>Prazo Próximo</div>
+                            <div style="font-size: var(--font-size-sm); opacity: 0.9;">1 atividade</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- What to do next -->
+                <div id="proximas-atividades" class="mb-xl">
+                    <!-- Will be loaded by JavaScript -->
+                </div>
+                
+                <!-- Motivational Section -->
+                <div class="mb-xl">
+                    <div class="card">
+                        <div class="card-body" style="text-align: center;">
+                            <h3 style="color: var(--color-primary); margin-bottom: var(--space-md);">🌟 Suas Conquistas</h3>
+                            
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); margin-bottom: var(--space-lg);">
+                                <div style="background: var(--color-success); color: white; padding: var(--space-md); border-radius: var(--radius-md);">
+                                    <div style="font-size: var(--font-size-xl); margin-bottom: var(--space-xs);">🎯</div>
+                                    <div style="font-weight: 600;">Presença da Semana</div>
+                                    <div style="font-size: var(--font-size-sm); opacity: 0.9;">4 de 5 dias - Muito bom!</div>
+                                </div>
+                                
+                                <div style="background: var(--color-primary); color: white; padding: var(--space-md); border-radius: var(--radius-md);">
+                                    <div style="font-size: var(--font-size-xl); margin-bottom: var(--space-xs);">📝</div>
+                                    <div style="font-weight: 600;">Atividade Entregue</div>
+                                    <div style="font-size: var(--font-size-sm); opacity: 0.9;">No prazo! Parabéns!</div>
+                                </div>
+                                
+                                <div style="background: var(--color-accent); color: white; padding: var(--space-md); border-radius: var(--radius-md);">
+                                    <div style="font-size: var(--font-size-xl); margin-bottom: var(--space-xs);">⭐</div>
+                                    <div style="font-weight: 600;">Melhoria na Nota</div>
+                                    <div style="font-size: var(--font-size-sm); opacity: 0.9;">+0.5 pontos!</div>
+                                </div>
+                            </div>
+                            
+                            <div style="background: var(--color-primary-light); padding: var(--space-lg); border-radius: var(--radius-md);">
+                                <h4 style="color: var(--color-primary); margin-bottom: var(--space-sm);">💪 Mensagem do Dia</h4>
+                                <p style="color: var(--color-primary); font-size: var(--font-size-lg);">
+                                    "Cada dia é uma nova oportunidade de aprender algo novo. Você está no caminho certo!"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Simple Schedule -->
+                <div class="mb-xl">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>📅 Minha Agenda Simples</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="simple-schedule">
+                                <div style="display: flex; align-items: center; padding: 15px; background: var(--color-error); color: white; border-radius: var(--radius-md); margin-bottom: var(--space-md);">
+                                    <div style="font-size: var(--font-size-xl); margin-right: var(--space-md);">🚨</div>
+                                    <div>
+                                        <div style="font-weight: 600; font-size: var(--font-size-lg);">HOJE - Prova de Matemática</div>
+                                        <div>08:00 - Sala A-201 - Não esqueça a calculadora!</div>
+                                    </div>
+                                </div>
+                                
+                                <div style="display: flex; align-items: center; padding: 15px; background: var(--color-warning); color: white; border-radius: var(--radius-md); margin-bottom: var(--space-md);">
+                                    <div style="font-size: var(--font-size-xl); margin-right: var(--space-md);">⚠️</div>
+                                    <div>
+                                        <div style="font-weight: 600;">SEXTA - Entregar Redação</div>
+                                        <div>Até 23:59 - Tema: Sustentabilidade</div>
+                                    </div>
+                                </div>
+                                
+                                <div style="display: flex; align-items: center; padding: 15px; background: var(--color-success); color: white; border-radius: var(--radius-md);">
+                                    <div style="font-size: var(--font-size-xl); margin-right: var(--space-md);">✅</div>
+                                    <div>
+                                        <div style="font-weight: 600;">PRÓXIMA SEMANA - Seminário</div>
+                                        <div>História - Você tem tempo para se preparar!</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Help and Support -->
+                <div class="mb-xl">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>🤝 Precisa de Ajuda?</h3>
+                        </div>
+                        <div class="card-body">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md);">
+                                <button class="btn btn-primary" onclick="askForHelp('professor')">
+                                    <span style="font-size: var(--font-size-lg);">👨‍🏫</span>
+                                    Falar com Professor
+                                </button>
+                                
+                                <button class="btn btn-secondary" onclick="askForHelp('colega')">
+                                    <span style="font-size: var(--font-size-lg);">👥</span>
+                                    Pedir Ajuda aos Colegas
+                                </button>
+                                
+                                <button class="btn btn-secondary" onclick="askForHelp('coordenacao')">
+                                    <span style="font-size: var(--font-size-lg);">🏫</span>
+                                    Falar com Coordenação
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/data.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/components.js"></script>
+    <script src="../js/app.js"></script>
+    
+    <script>
+    function askForHelp(type) {
+        const messages = {
+            professor: 'Ótima ideia! Seus professores estão sempre dispostos a ajudar. Procure-os após a aula ou envie uma mensagem.',
+            colega: 'Estudar em grupo é uma excelente estratégia! Que tal formar um grupo de estudos com seus colegas?',
+            coordenacao: 'A coordenação está aqui para te apoiar. Você pode conversar com eles durante o intervalo ou agendar uma conversa.'
+        };
+        
+        Notification.show(`💡 ${messages[type]}`, 'info', 8000);
+    }
+    
+    // Show motivational notifications periodically
+    setInterval(() => {
+        const motivationalMessages = [
+            '🎯 Lembre-se: você é capaz de mais do que imagina!',
+            '💪 Cada pequeno esforço conta para o seu sucesso!',
+            '🌟 Acredite em você - nós acreditamos!',
+            '📚 O conhecimento é o seu superpoder!'
+        ];
+        
+        const randomMessage = motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
+        Notification.show(randomMessage, 'success', 6000);
+    }, 300000); // Every 5 minutes
+    </script>
+    
+    <style>
+    /* Enhanced visual feedback for this profile */
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    .card {
+        transition: transform var(--transition-fast);
+    }
+    
+    .card:hover {
+        transform: translateY(-1px);
+    }
+    
+    /* Larger touch targets for mobile */
+    @media (max-width: 768px) {
+        .btn {
+            min-height: 50px;
+            font-size: var(--font-size-lg);
+        }
+    }
+    </style>
+</body>
+</html>
